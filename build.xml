@@ -1,4 +1,4 @@
-<project name="test" default="sync" xmlns:sf="antlib:com.salesforce">
+<project name="test" xmlns:sf="antlib:com.salesforce">
 	<property environment="env"/>
 	<property name="sf.username"      value="${env.username}"/>
 	<property name="sf.password"      value="${env.password}"/>
