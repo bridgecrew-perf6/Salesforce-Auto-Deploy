@@ -162,7 +162,7 @@
 	
     <target name="ret">
     	<mkdir dir="src"/>
-    	<sf:retrieve username="${sf.username}" password="${sf.password}" sessionid="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="src" unpackaged="${sf.deployDir}/package.xml"/>
+    	<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="src" unpackaged="${sf.deployDir}/package.xml"/>
     </target>
 
     <target name="deploy">
@@ -171,6 +171,19 @@
 			<and><equals arg1="${canDeploy}" arg2="true"/> </and>
 			<then>
 				<sf:deploy sessionid="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.deployDir}" rollbackOnError="true"/>
+			</then>
+			<else>
+				<echo>Nothing to deploy</echo>
+			</else>
+		</if>
+    </target>
+	
+	<target name="deploywithpwd">
+		<echo>Deployment Begins...</echo>
+		<if>
+			<and><equals arg1="${canDeploy}" arg2="true"/> </and>
+			<then>
+				<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.deployDir}" rollbackOnError="true"/>
 			</then>
 			<else>
 				<echo>Nothing to deploy</echo>
@@ -275,7 +288,9 @@
 	<target name="builderWithGitDiff" depends="diffBuilderWithGitCommit,deploy">
 		
     </target>
-	
+	<target name="builderWithGitDiffpwd" depends="diffBuilderWithGitCommit,deploywithpwd">
+		
+    </target>
 	<target name="builderProd" depends="diffBuilderWithGitCommit,deployProd">
 		
     </target>
