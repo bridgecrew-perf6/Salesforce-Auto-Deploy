@@ -161,7 +161,7 @@
 	
     <target name="ret">
     	<mkdir dir="src"/>
-    	<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="src" unpackaged="package.xml"/>
+    	<sf:retrieve username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" retrieveTarget="src" unpackaged="${sf.deployDir}/package.xml"/>
     </target>
 
     <target name="deploy">
