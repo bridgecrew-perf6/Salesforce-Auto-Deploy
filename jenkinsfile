@@ -1,0 +1,21 @@
+environment
+            {
+                SERVICE_CREDS=credentials('salesforce-creds')
+
+            }
+
+
+    stages
+    {
+
+         stage('Deploy')
+         {
+            steps
+            {
+                echo "Deploying"
+
+                bat 'ant -f ./build.xml CIDeploy'
+            }   
+
+         }
+      }
