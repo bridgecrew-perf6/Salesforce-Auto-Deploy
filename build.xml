@@ -170,7 +170,7 @@
 		<if>
 			<and><equals arg1="${canDeploy}" arg2="true"/> </and>
 			<then>
-				<sf:deploy username="${sf.username}" password="${sf.password}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.deployDir}" rollbackOnError="true"/>
+				<sf:deploy username="${sf.username}" password="${sf.password}" sessionid="${sf.sessionId}" serverurl="${sf.serverurl}" maxPoll="${sf.maxPoll}" deployRoot="${sf.deployDir}" rollbackOnError="true"/>
 			</then>
 			<else>
 				<echo>Nothing to deploy</echo>
